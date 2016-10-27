@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Create Account</title>
+	<link rel="stylesheet" type="text/css" href="createAccount.css"/>
+</head>
+<body>
+    
+<ul class="logo">
+	<li><img class="login" src="logo" alt="channel" width="42" height="42"/>
+</ul>
+	
+<ul>
+  <li><a class="active" href="#home">HOME</a></li>
+  <li><a href="#SEARCH">CREATE POST</a></li>
+  <li><a href="#SCHEDULE APPOINTMENT">EDIT POST</a></li>
+  <li><a href="#FEEDBACK">DELETE POST</a></li>
+</ul>
+
+<form action="#" method="post">
+
+<div class="data">
+<h1>Create An Account</h1>
+
+ <fieldset >
+	<p class="warning">All marked entries must be completed!!!</p>
+	<p> Your email address must be a umbc email.</p>
+	<p> You must also agreed to the term and condition of this application</p>
+
+	<table class="table">
+		<tr>
+			<td> <label style="color:indigo;" for="user">* First Name: </label></td>
+			<td><input type="text" name="uname" placeholder="First Name" size="30" maxlength="30" id="user" required autocomplete="on"/></td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:indigo;" for="user">* Last Name: </label></td>
+			<td><input type="text" name="uname" placeholder="Last Name" size="30" maxlength="30" id="user" required autocomplete="on"/></td><br />
+		</tr>
+		<tr>  
+			<td> <label style="color:indigo;" for="user">* Email: </label></td>
+			<td><input type="email" name="email" placeholder="username@umbc.edu" size="30" autocomplete="on" required id="user" /></td><br />
+		</tr>
+		<tr>  
+			<td> <label style="color:indigo;" for="user">* Username: </label></td>
+			<td> <input type = "text" name = "uname" placeholder="Username" autocomplete="on" required size = "25" maxlength="25" id="user"/> </td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:brown;" for="pass">* Password: </label></td>
+			<td> <input type = "password" name = "mypass" placeholder="password" autocomplete="off" required size = "10" maxlength="10" id="pass"/> </td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:indigo;" for="myStreet"> Street: </label></td>
+			<td> <input type = "text" name = "addr" placeholder="street" autocomplete="on" required size = "30" maxlength="30" id="myStreet"/> </td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:indigo;" for="myCity"> City: </label></td>
+			<td> <input type = "text" name = "addr" placeholder="City" autocomplete="on" required size = "15" maxlength="15" id="myCity"/> </td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:indigo;" for="myZipcode"> Zipcode: </label></td>
+			<td> <input type = "text" name = "addr" placeholder="Zipcode" autocomplete="on" required size = "5" maxlength="5" id="myZipcode"/> </td><br />
+		</tr>
+		<tr>
+			<td> <label style="color:indigo;" for="myState"> State: </label></td>
+			<td> <input type = "text" name = "addr" placeholder="State" autocomplete="on" required size = "15" maxlength="15" id="myState"/> </td><br />
+		</tr>
+		<tr>
+			<td>*</td>
+			<td><label><input type="radio" name="agree" value="agreement" required> agree the terms and conditions of this application.<br /></td>
+		</tr>
+  
+		<tr>
+			<td>
+				<input class="btn btn-default" type = "submit" value="Submit form" />
+			</td>
+			<td>
+				<input class="btn btn-default" type = "reset" value="Reset form" />
+			</td>
+		</tr>
+	
+  </fieldset>
+</div>
+
+    
+    
+</form>
+</body>
+</html>
