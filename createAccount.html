@@ -8,6 +8,8 @@
     <head>
         <title>Create Account</title>
         <link rel="stylesheet" type="text/css" href="homepage.css" />
+        <script type = "text/javascript"  src = "createAccount.js" >
+    </script>
     </head>
 <body>
 
@@ -31,31 +33,31 @@
 	<table>
 	<tr>
 		<td><label style="color:indigo;" for="user">* First Name: </label></td>
-		<td><input  class="input" type="text" name="uname" placeholder="First Name" id="firstname" size="30" maxlength="30" required autocomplete="on"/></td>
+		<td><input  class="input" type="text" name="uname" placeholder="First Name" id="firstname" size="30" maxlength="16"  autocomplete="on"/></td>
 	</tr>
 	<tr>
 		<td><label  style="color:indigo;" for="user">* Last Name: </label></td>
-		<td><input class="inputtag" type="text" name="uname" placeholder="Last Name" id="lastname" size="30" maxlength="30" required autocomplete="on"/></td>
+		<td><input class="inputtag" type="text" name="uname" placeholder="Last Name" id="lastname" size="30" maxlength="16"  autocomplete="on"/></td>
 	</tr>
 	<tr>
 		<td><label style="color:indigo;" for="user">* Email: </label></td>
-		<td><input class="inputtag" type="email" name="email" placeholder="username@umbc.edu" id= "email" size="30" autocomplete="on" required id="user" /></td>
+		<td><input class="inputtag" type="email" name="email" placeholder="username@umbc.edu" id= "email" size="30" autocomplete="on" id="user" /></td>
 	</tr>
 	<tr>
 		<td><label style="color:indigo;" for="user">* Username: </label></td>
-		<td><input type = "text" name = "uname" placeholder="Username" id="username" autocomplete="on" required size = "25" maxlength="25" id="user"/></td>
+		<td><input type = "text" name = "uname" placeholder="Username" id="username" autocomplete="on"  size = "25" min="10" maxlength="25" id="user"/></td>
 	</tr>
 	
 	<tr>
 		<td><label style="color:brown;" for="pass">* Password: </label></td>
-		<td><input type = "password" name = "mypass" placeholder="password" id="password" autocomplete="off" required size = "10" maxlength="10"/></td>
+		<td><input type = "password" name = "mypass" placeholder="password" id="password" autocomplete="off" size = "10" maxlength="10"/></td>
 	</tr>
 	<tr class="submitinput">
 		<td><label style="color:brown;" for="pass">* Re-password: </label></td>
-		<td><input type = "password" name = "mypass" placeholder="password" id="re-password" autocomplete="off" required size = "10" maxlength="10"/></td>
+		<td><input type = "password" name = "mypass" placeholder="password" id="repassword" autocomplete="off" size = "10" maxlength="10"/></td>
 	</tr>
 	<tr>
-		<td><input class="btn btn-default" type = "submit" id="submit" value="Submit form" />
+		<td><input class="btn btn-default" type = "submit" value="Submit form" onclick="return validate();" />
 		<input class="btn btn-default" type = "reset" value="Reset form" /></td>
 	</tr>
 		</table>
