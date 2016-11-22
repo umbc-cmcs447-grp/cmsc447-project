@@ -14,3 +14,9 @@ Tommy: search post
 
 
 Chen:
+
+
+What's Left:
+edit post
+logout
+delete post 
