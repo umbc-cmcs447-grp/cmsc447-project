@@ -1,4 +1,4 @@
-body{
+html{
 	background-color: orange;
 	margin-left:400px;
 	margin-right:400px;
@@ -41,8 +41,10 @@ img.login{
 	padding-right: 500px;
 }
 .logo-text{
-	padding-right:20px;
-	padding-left: 500px;
+	padding-right:350px;
+	font-size:40px;
+	background-color:#1abc9c;
+	
 }
 .logo-text-left{
 	padding-left: 0px;
@@ -68,4 +70,71 @@ img.login{
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+body{
+	padding: 10px;
+	background-color:#1abc9c;
+	height:auto;
+}
+img.image1{ 
+float: right;
+}
+
+input{
+	padding-left:50px;
+	font-size:15px;
+}
+form{
+	font-size:20px;
+}
+
+.btn-default {
+  border: 0px;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+  text-align:center;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+
+tr.submitinput{
+	padding-top:20px;
+}
+
+tr.options{
+	padding-bottom:50px;
+}
+
+/** create some space between each input **/
+div.option {
+	font-weight: 600;
+	margin: 8px 26px 28px 20px;
+	vertical-align: top;
+}
+/** table container **/
+div.table {
+	margin: 0px auto;
+	width: 75%;
+	min-width: 600px;
+	max-width: 700px;
+}
+
+input.resize{
+	padding-right:100px;
+}
+
+textarea {
+	width: 400px;
+	height: 160px;
+	vertical-align: text-top;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	resize: none;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
 }
