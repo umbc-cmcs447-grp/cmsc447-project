@@ -1,0 +1,16 @@
+Let's keep track of who is doing what in this file so that we aren't constantly questioning, asking questions, or stepping on each other's toes. We can constantly update this file as time goes on. I'll (Donnell) try to keep it updated the most
+
+
+Asher: genereal JS Fucntions
+
+
+Rasheed: login, create account, validation (for those functions) 
+
+
+Donnell: create post and validation
+
+
+Tommy: search post
+
+
+Chen:
