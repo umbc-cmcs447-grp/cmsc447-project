@@ -13,10 +13,9 @@ Donnell: create post and validation
 Tommy: search post
 
 
-Chen:
+Chen: edit post, delete post
 
 
 What's Left:
-edit post
 logout
-delete post 
+
