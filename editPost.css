@@ -1,0 +1,166 @@
+body{
+	background-color: orange;
+	width: auto;
+	min-width: 600px;
+	overflow: scroll;
+}
+#root{
+	min-width: 600px;
+  width: 50%;
+	margin:auto;
+}
+textarea{
+	resize: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+#my_posts li{
+	color: blue;
+}
+
+#my_posts li:hover{
+	color: red;
+	cursor: default;
+}
+
+ul.unordered_list{
+	list-style-type: disc;
+	margin-left: 30px;
+	padding: inherit;
+	overflow: inherit;
+	background-color: inherit;
+}
+
+ul.unordered_list>li{
+	float: none;
+}
+
+img.login{
+	padding-right: 500px;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li .active{
+	background-color: red;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.logo{
+	background-color: orange;
+	float: none;
+}
+.float-right{
+	float: right;
+}
+.float-left{
+	float: left;
+}
+.logo-text{
+	font-size:40px;
+	padding-left: 0;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.data{
+	padding: 10px;
+	background-color:#1abc9c;
+	min-height: 300px;
+}
+
+p.warning{
+	font-style:italic;
+	font-size: 25px;
+	padding-bottom: 0px;
+}
+
+.table{
+	padding: 0px;
+}
+
+.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+footer{
+	border: 0;
+	background: #648880;
+
+	font-size: 14px;
+}
+
+.hidden{
+	display: none;
+}
+
+.show-when-logged-in, .show-when-logged-out, .my-post-list-page, .edit-form-page{
+	display: none;
+}
+
+.error{
+	display: none;
+	background-color: #f44336;
+	color: white;
+}

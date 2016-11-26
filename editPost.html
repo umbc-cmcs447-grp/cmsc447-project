@@ -1,49 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>Search Artists</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="homepage.css" />
+		<title>Create Post</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="editPost.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+		<script src="editPost.js"></script>
 	</head>
 	<body>
-	<ul class="logo">
-			<li class="logo-text" >NetBuz</li>
-			<li><a class="active" href="logout.html">logout</a></li>
-		</ul>
-		<div class="container">
-		
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a onclick="NB.handleLogout();">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
-			<div class="menu">
-				<ul>
-					<li><a class="active" href="index.html">HOME</a></li>
-					<li><a href="createPost.html">CREATE POST</a></li>
-					<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
-					<li><a href="search.html">SEARCH POST</a></li>
-				</ul>
-			</div>
-			
-			<div class="content">
-				<div class="title">
-					<h2>My Posts</h2>
-				</div>
-				<div>
-					<div class="table">
-						<table>
-							<tr>
-								<td><a href="sellingbook.html">Selling Books</a></td>
-							</tr>
-							<tr>
-								<td><a href="tutoring.html">Tutoring</a></td>
-							</tr>
-							<tr>
-								<td><a href="sellinglaptop.html">Selling laptop</a></td>
-							</tr>
-							<tr>
-								<td><a href="mechanic.html">Auto Mechanic</a></td>
-							</tr>
-						</table>
-					</div>
-				</div>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a class="active" href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
+
+			<div class="data">
+        <div class="show-when-logged-in my-post-list-page">
+          <h1>My Posts</h1>
+          <ol id="my_posts">
+
+          </ol>
+        </div>
+
+        <div class="show-when-logged-out" id="login_success">
+  				<p> You must log in first. </p>
+  			</div>
+
+        <form class="edit-form-page" id="edit_post">
+					<h1>Edit My Post</h1>
+  					<table class="table">
+              <tbody>
+    						<tr>
+    							<td> <label for="title">Name of Post: </label></td>
+    							<td> <input type = "text" name = "title" required /> </td>
+    						</tr>
+    						<tr>
+    							<td> <label for="category">Category: </label></td>
+    							<td>
+  									<select id="category" name="category">
+                      <option value="TEXTBOOKS">Textbooks</option>
+                      <option value="TUTORING">Tutoring</option>
+                    </select>
+                  </td>
+    						</tr>
+                <tr>
+                  <td> <label for="body">Post Description: </label></td>
+                  <td> <textarea id="body" name="body" rows="10" cols="50"></textarea> </td>
+                </tr>
+                <tr>
+    							<td> <label for="status">Status: </label></td>
+    							<td>
+  									<select id="status" name="status">
+                      <option value="OPEN">Open</option>
+                      <option value="CLOSED">Closed</option>
+                      <option value="IN_PROGRESS">In progress</option>
+                    </select>
+                  </td>
+    						</tr>
+    						<tr>
+                  <td></td>
+    							<td>
+    								<div class="btn btn-default" onclick="NB.handleEditFormUpdateButton()">Update</div>
+    								<div class="btn btn-default" onclick="NB.handleEditFormRemoveButton()">Remove</div>
+                    <div class="btn btn-default" onclick="NB.handleEditFormCancelButton()">Cancel</div>
+    							</td>
+    						</tr>
+              </tbody>
+  					</table>
+  			</form>
 			</div>
 		</div>
 	</body>
