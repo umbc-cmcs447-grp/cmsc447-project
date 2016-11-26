@@ -47,7 +47,7 @@ var NetBuz = {
     getUser: function (id, success, failure) {
         $.ajax({
             type: 'GET',
-            url: NetBuz.baseUrl() + "/users/" + encodeURIComponent(id),
+            url: NetBuz.baseUrl() + "/users/" + id,
             dataType: "json",
             success: success,
             error: failure
@@ -57,7 +57,7 @@ var NetBuz = {
     login: function (id, password, success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/users/" + encodeURIComponent(id) + "/login",
+            url: NetBuz.baseUrl() + "/users/" + id + "/login",
             contentType: "application/json",
             data: JSON.stringify({
                 password: password
@@ -74,7 +74,7 @@ var NetBuz = {
     logout: function (success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/users/" + encodeURIComponent(NetBuz.getLoggedInId()) + "/logout",
+            url: NetBuz.baseUrl() + "/users/" + NetBuz.getLoggedInId() + "/logout",
             beforeSend: function (request) {
                 NetBuz.setAuthHeader(request)
             },
@@ -90,7 +90,7 @@ var NetBuz = {
     changePassword: function (id, oldPass, newPass, success, failure) {
         $.ajax({
             type: 'PATCH',
-            url: NetBuz.baseUrl() + "/users/" + encodeURIComponent(id) + "/password",
+            url: NetBuz.baseUrl() + "/users/" + id + "/password",
             contentType: "application/json",
             data: JSON.stringify({
                 oldPassword: oldPass,
@@ -122,7 +122,57 @@ var NetBuz = {
     getPost: function (postId, success, failure) {
         $.ajax({
             type: 'GET',
-            url: NetBuz.baseUrl() + "/posts/" + encodeURIComponent(postId),
+            url: NetBuz.baseUrl() + "/posts/" + postId,
+            dataType: "json",
+            success: success,
+            error: failure
+        })
+    },
+
+    modifyPost: function (postId, updates, success, failure) {
+        $.ajax({
+            type: 'PATCH',
+            url: NetBuz.baseUrl() + "/posts/" + postId,
+            beforeSend: function (request) {
+                NetBuz.setAuthHeader(request)
+            },
+            contentType: "application/json",
+            data: JSON.stringify(updates),
+            dataType: "json",
+            success: success,
+            error: failure
+        })
+    },
+
+    deletePost: function (postId, success, failure) {
+        $.ajax({
+            type: 'DELETE',
+            url: NetBuz.baseUrl() + "/posts/" + postId,
+            beforeSend: function (request) {
+                NetBuz.setAuthHeader(request)
+            },
+            dataType: "json",
+            success: success,
+            error: failure
+        })
+    },
+
+    searchPosts: function (users, categories, statuses, success, failure) {
+        var query = "";
+
+        if (users[0] != null) {
+            query += "users=" + users.join(',') + "&"
+        }
+        if (categories[0] != null) {
+            query += "categories=" + categories.join(',') + "&"
+        }
+        if (statuses[0] != null) {
+            query += "statuses=" + statuses.join(',')
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: NetBuz.baseUrl() + "/search/posts?" + query,
             dataType: "json",
             success: success,
             error: failure
