@@ -12,7 +12,7 @@ function validate()
 	
     var pattern1 = /^[A-z]+$/;  //firstname and lastname
     var pattern2 = /^[A-Z]+[0-9]*\@umbc.edu$/i;     //email
-    var pattern3   = /^[A-z]+[0-9]*[^0-9a-z]*$/i;   //password
+    var pattern3   = /^.{10,64}$/i;   //password
 	var pattern4 = /^[A-z]+[0-9]*$/i;	//username
         
 		
@@ -71,7 +71,7 @@ function validate()
 
 function createUser(firstname, lastname, username, password1)
 {
-    var newUser = new NetBuz.NewUser(username, password1, firstname, firstname);
+    var newUser = new NetBuz.NewUser(username, firstname, lastname, password1);
 
     console.log("here");
     function success()
