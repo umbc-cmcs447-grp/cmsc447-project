@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Create Post</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="logout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a onclick="NB.handleLogout();">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
+
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
+
+			<div class="data">
+        <p id="message"></p>
+			</div>
+		</div>
+	</body>
+  <script>
+    NetBuz.logout(
+      ()=>{
+        $("#message").text("You have been logged out successfully.");
+        $(".show-when-logged-in").hide();
+        $(".show-when-logged-out").show();
+      },
+      ()=>{
+        $("#message").text("An error occurred. You might not have been completely logged out.");
+        $(".show-when-logged-in").show();
+        $(".show-when-logged-out").hide();
+      }
+    );
+  </script>
+</html>
