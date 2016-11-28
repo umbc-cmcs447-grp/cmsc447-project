@@ -25,7 +25,7 @@ NB.getMyPostsFromServer=(callback)=>{
   if(!userID){
     return;
   }
-  NetBuz.searchPosts(userID,null,null,(data)=>{
+  NetBuz.searchPosts([userID],[],[],(data)=>{
     NB.myPosts=data;
     callback(data);
   });
