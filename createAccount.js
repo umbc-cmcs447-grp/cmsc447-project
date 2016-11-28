@@ -60,7 +60,7 @@ function validate()
             alert("re-password is not valid");
             return false;
         }
-        else if(password != repassword)
+        else if(password1 != repassword)
         {
             alert("password missmatch");
             return false;
