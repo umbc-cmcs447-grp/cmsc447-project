@@ -1,7 +1,5 @@
 var NetBuz = {
-    baseUrl: function () {
-        return "localhost:9000";
-    },
+    baseUrl: "http://localhost:9000",
 
     NewPost: function (title, body, category) {
         this.title = title;
@@ -35,7 +33,7 @@ var NetBuz = {
     createUser: function (newUser, success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/users",
+            url: this.baseUrl + "/users",
             contentType: "application/json",
             data: JSON.stringify(newUser),
             dataType: "json",
@@ -52,7 +50,7 @@ var NetBuz = {
     getUser: function (id, success, failure) {
         $.ajax({
             type: 'GET',
-            url: NetBuz.baseUrl() + "/users/" + id,
+            url: this.baseUrl + "/users/" + id,
             dataType: "json",
             success: success,
             error: failure
@@ -62,7 +60,7 @@ var NetBuz = {
     login: function (id, password, success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/users/" + id + "/login",
+            url: this.baseUrl + "/users/" + id + "/login",
             contentType: "application/json",
             data: JSON.stringify({
                 password: password
@@ -79,7 +77,7 @@ var NetBuz = {
     logout: function (success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/users/" + NetBuz.getLoggedInId() + "/logout",
+            url: this.baseUrl + "/users/" + NetBuz.getLoggedInId() + "/logout",
             beforeSend: function (request) {
                 NetBuz.setAuthHeader(request)
             },
@@ -95,7 +93,7 @@ var NetBuz = {
     changePassword: function (id, oldPass, newPass, success, failure) {
         $.ajax({
             type: 'PATCH',
-            url: NetBuz.baseUrl() + "/users/" + id + "/password",
+            url: this.baseUrl + "/users/" + id + "/password",
             contentType: "application/json",
             data: JSON.stringify({
                 oldPassword: oldPass,
@@ -112,7 +110,7 @@ var NetBuz = {
     createPost: function (newPost, success, failure) {
         $.ajax({
             type: 'POST',
-            url: NetBuz.baseUrl() + "/posts",
+            url: this.baseUrl + "/posts",
             beforeSend: function (request) {
                 NetBuz.setAuthHeader(request)
             },
@@ -127,7 +125,7 @@ var NetBuz = {
     getPost: function (postId, success, failure) {
         $.ajax({
             type: 'GET',
-            url: NetBuz.baseUrl() + "/posts/" + postId,
+            url: this.baseUrl + "/posts/" + postId,
             dataType: "json",
             success: success,
             error: failure
@@ -137,7 +135,7 @@ var NetBuz = {
     modifyPost: function (postId, updates, success, failure) {
         $.ajax({
             type: 'PATCH',
-            url: NetBuz.baseUrl() + "/posts/" + postId,
+            url: this.baseUrl + "/posts/" + postId,
             beforeSend: function (request) {
                 NetBuz.setAuthHeader(request)
             },
@@ -152,7 +150,7 @@ var NetBuz = {
     deletePost: function (postId, success, failure) {
         $.ajax({
             type: 'DELETE',
-            url: NetBuz.baseUrl() + "/posts/" + postId,
+            url: this.baseUrl + "/posts/" + postId,
             beforeSend: function (request) {
                 NetBuz.setAuthHeader(request)
             },
@@ -177,7 +175,7 @@ var NetBuz = {
 
         $.ajax({
             type: 'GET',
-            url: NetBuz.baseUrl() + "/search/posts?" + query,
+            url: this.baseUrl + "/search/posts?" + query,
             dataType: "json",
             success: success,
             error: failure
