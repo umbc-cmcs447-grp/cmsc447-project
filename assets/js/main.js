@@ -39,7 +39,9 @@ var NetBuz = {
             dataType: "json",
             success: function (data) {
                 var onComplete = function () {
-                    success(data)
+                    if (success != null) {
+                        success(data)
+                    }
                 };
                 NetBuz.login(newUser.id, newUser.password, onComplete, onComplete);
             },
@@ -68,7 +70,9 @@ var NetBuz = {
             dataType: "json",
             success: function (data) {
                 NetBuz.setAuthToken(id, data);
-                success(data);
+                if (success != null) {
+                    success(data);
+                }
             },
             error: failure
         })
@@ -84,7 +88,9 @@ var NetBuz = {
             success: function () {
                 localStorage.removeItem(NetBuz.authStorageKey);
                 localStorage.removeItem(NetBuz.userStorageKey);
-                success()
+                if (success != null) {
+                    success();
+                }
             },
             error: failure
         })
@@ -101,7 +107,9 @@ var NetBuz = {
             }),
             success: function (data) {
                 NetBuz.setAuthToken(id, data);
-                success(data)
+                if (success != null) {
+                    success(data);
+                }
             },
             error: failure
         })
