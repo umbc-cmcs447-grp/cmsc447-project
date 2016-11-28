@@ -1,6 +1,6 @@
 "use strict";
 
-const NB={};
+var NB={};
 
 NB.myPosts=[];
 NB.postIndex=null;
@@ -15,13 +15,13 @@ NB.ParseForm=(formID)=>{
 }
 
 NB.fillForm=(formID, formData)=>{
-  for(let prop in formData){
+  for(var prop in formData){
     $('#'+formID+' [name="'+prop+'"]').val(formData[prop]);
   }
 }
 
 NB.getMyPostsFromServer=(callback)=>{
-  let userID=NetBuz.getLoggedInId();
+  var userID=NetBuz.getLoggedInId();
   if(!userID){
     return;
   }
@@ -32,7 +32,7 @@ NB.getMyPostsFromServer=(callback)=>{
 }
 
 NB.updateMyPostList=(posts)=>{
-  let myPostList=$("#my_posts");
+  var myPostList=$("#my_posts");
   myPostList.empty();
   posts.forEach((post)=>{
     myPostList.append("<li><u>"+post.title+"</u></li>");
@@ -64,9 +64,9 @@ NB.gotoMyPostListPage=()=>{
 }
 
 NB.handleEditFormUpdateButton=()=>{
-  let formData= NB.ParseForm("edit_post");
-  let postId= NB.myPosts[NB.postIndex].postId;
-  let success=()=>{
+  var formData= NB.ParseForm("edit_post");
+  var postId= NB.myPosts[NB.postIndex].postId;
+  var success=()=>{
     alert("post updated");
     NB.postIndex=null;
     NB.getMyPostsFromServer(()=>{
@@ -74,15 +74,15 @@ NB.handleEditFormUpdateButton=()=>{
       NB.gotoMyPostListPage();
     });
   }
-  let failure=()=>{
+  var failure=()=>{
     alert("Error");
   }
   NetBuz.modifyPost(postId, formData, success, failure);
 }
 
 NB.handleEditFormRemoveButton=()=>{
-  let postId= NB.myPosts[NB.postIndex].postId;
-  let success=()=>{
+  var postId= NB.myPosts[NB.postIndex].postId;
+  var success=()=>{
     alert("post deleted");
     NB.postIndex=null;
     NB.getMyPostsFromServer(()=>{
@@ -90,7 +90,7 @@ NB.handleEditFormRemoveButton=()=>{
       NB.gotoMyPostListPage();
     });
   }
-  let failure=()=>{
+  var failure=()=>{
     alert("Error");
   }
   NetBuz.deletePost(postId, success, failure);
@@ -108,7 +108,7 @@ NB.handleLogout=()=>{
 
 //this is the app entry point
 $(()=>{
-  let loggedIn=NetBuz.getLoggedInId();
+  var loggedIn=NetBuz.getLoggedInId();
   if(loggedIn){
     NB.updateLoggedInView(true);
     NB.getMyPostsFromServer(NB.updateMyPostList);
