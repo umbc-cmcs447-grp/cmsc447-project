@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link rel="stylesheet" type="text/css" href="../homepage.css" />
+</head>
+<body>
+
+<ul class="logo">
+    <li class="logo-text" >NetBuz</li>
+    <li><a class="active" href="../login.html">login</a></li>
+</ul>
+
+<ul>
+    <li><a href="../">HOME</a></li>
+    <li><a href="#CREATE POST">CREATE POST</a></li>
+    <li><a href="#EDIT POST">EDIT/REMOVE POST</a></li>
+    <li><a href="#DELETE POST">SEARCH POST</a></li>
+</ul>
+
+<h2><span id="post-title"></span></h2>
+<h4><span id="author-id"></span></h4>
+<div id="post-body"></div>
+<div>
+    <button id="contact" type="button" disabled>Contact</button>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/main.js"></script>
+<script type="text/javascript">
+    var params = queryParams();
+    var postId = params["id"];
+
+    NetBuz.getPost(postId, function (data) {
+        $("#post-title")[0].innerText = data.title;
+        $("#post-body")[0].innerText = data.body;
+        var author = $("#author-id")[0];
+        author.innerText = "Posted by: " + data.authorId;
+
+        var contact = $("#contact");
+        contact.click(function () {
+            window.open("mailto:" + data.authorId + "@umbc.edu?subject=Re: NetBuz Post " + postId + " -    "
+            + encodeURIComponent(data.title), "_blank")
+        });
+        contact[0].disabled = false;
+
+        NetBuz.getUser(data.authorId, function (data) {
+            author.innerText = "Posted by: " + data.firstName + " " + data.lastName;
+        })
+    }, function (request, textStatus) {
+        var message = null;
+        try {
+            message = JSON.parse(request.responseText).message;
+        } catch (e) {
+            message = request.status;
+            console.log(e);
+        }
+        $("#post-body")[0].innerText = message;
+    });
+</script>
+
+</body>
+</html>
