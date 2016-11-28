@@ -26,6 +26,7 @@ li {
 
 #my_posts li{
 	color: blue;
+	float: none;
 }
 
 #my_posts li:hover{

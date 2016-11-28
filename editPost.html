@@ -36,7 +36,7 @@
   				<p> You must log in first. </p>
   			</div>
 
-        <form class="edit-form-page" id="edit_post">
+        <form class="edit-form-page" id="edit_post" onsubmit="NB.handleEditFormUpdateButton(); return false;">
 					<h1>Edit My Post</h1>
   					<table class="table">
               <tbody>
@@ -55,7 +55,7 @@
     						</tr>
                 <tr>
                   <td> <label for="body">Post Description: </label></td>
-                  <td> <textarea id="body" name="body" rows="10" cols="50"></textarea> </td>
+                  <td> <textarea id="body" name="body" rows="10" cols="50" required></textarea> </td>
                 </tr>
                 <tr>
     							<td> <label for="status">Status: </label></td>
@@ -70,7 +70,7 @@
     						<tr>
                   <td></td>
     							<td>
-    								<div class="btn btn-default" onclick="NB.handleEditFormUpdateButton()">Update</div>
+    								<input class="btn btn-default" type="submit" value="Update"></div>
     								<div class="btn btn-default" onclick="NB.handleEditFormRemoveButton()">Remove</div>
                     <div class="btn btn-default" onclick="NB.handleEditFormCancelButton()">Cancel</div>
     							</td>
