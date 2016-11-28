@@ -3,6 +3,7 @@
 const NB={};
 
 NB.myPosts=[];
+NB.postIndex=null;
 
 NB.ParseForm=(formID)=>{
   return $("#"+formID)
@@ -19,16 +20,15 @@ NB.fillForm=(formID, formData)=>{
   }
 }
 
-NB.getMyPostsFromServer=()=>{
-  //The API cant do this yet, return an array of dummy post object for now
-  return [
-    {
-      title: "Example Post",
-      body: "Example post description. text...",
-      category: "TUTORING",
-      status: "OPEN"
-    }
-  ];
+NB.getMyPostsFromServer=(callback)=>{
+  let userID=NetBuz.getLoggedInId();
+  if(!userID){
+    return;
+  }
+  NetBuz.searchPosts(userID,null,null,(data)=>{
+    NB.myPosts=data;
+    callback(data);
+  });
 }
 
 NB.updateMyPostList=(posts)=>{
@@ -64,18 +64,40 @@ NB.gotoMyPostListPage=()=>{
 }
 
 NB.handleEditFormUpdateButton=()=>{
-  //...ajax to server
-  //..modify NB.MyPost
-  NB.gotoMyPostListPage();
+  let formData= NB.ParseForm("edit_post");
+  let postId= NB.myPosts[NB.postIndex].postId;
+  let success=()=>{
+    alert("post updated");
+    NB.postIndex=null;
+    NB.getMyPostsFromServer(()=>{
+      NB.updateMyPostList();
+      NB.gotoMyPostListPage();
+    });
+  }
+  let failure=()=>{
+    alert("Error");
+  }
+  NetBuz.modifyPost(postId, formData, success, failure);
 }
 
 NB.handleEditFormRemoveButton=()=>{
-  //...ajax to server
-  //..modify NB.MyPost
-  NB.gotoMyPostListPage();
+  let postId= NB.myPosts[NB.postIndex].postId;
+  let success=()=>{
+    alert("post deleted");
+    NB.postIndex=null;
+    NB.getMyPostsFromServer(()=>{
+      NB.updateMyPostList();
+      NB.gotoMyPostListPage();
+    });
+  }
+  let failure=()=>{
+    alert("Error");
+  }
+  NetBuz.deletePost(postId, success, failure);
 }
 
 NB.handleEditFormCancelButton=()=>{
+  NB.postIndex=null;
   NB.gotoMyPostListPage();
 }
 
@@ -86,14 +108,13 @@ NB.handleLogout=()=>{
 
 //this is the app entry point
 $(()=>{
-  let loggedIn=true; //for development purpose set this to true, until there is a way to test log in with server
+  let loggedIn=NetBuz.getLoggedInId();
   if(loggedIn){
     NB.updateLoggedInView(true);
-    NB.myPosts=NB.getMyPostsFromServer();
-    NB.updateMyPostList(NB.myPosts);
+    NB.getMyPostsFromServer(NB.updateMyPostList);
     $("#my_posts").on("click", "li", function(event){
-      let postIndex=$(event.currentTarget).index();
-      NB.gotoEditFormPage(NB.myPosts[postIndex]);
+      NB.postIndex=$(event.currentTarget).index();
+      NB.gotoEditFormPage(NB.myPosts[NB.postIndex]);
     });
   }
   else{
