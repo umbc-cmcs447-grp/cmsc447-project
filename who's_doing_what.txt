@@ -4,7 +4,7 @@ Let's keep track of who is doing what in this file so that we aren't constantly 
 Asher: genereal JS Fucntions
 
 
-Rasheed: login, create account, validation (for those functions) 
+Rasheed: login, create account, validation (for those functions)
 
 
 Donnell: create post and validation
@@ -13,9 +13,7 @@ Donnell: create post and validation
 Tommy: search post
 
 
-Chen: edit post, delete post
+Chen: edit post, delete post, logout
 
 
 What's Left:
-logout
-
