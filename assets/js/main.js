@@ -39,7 +39,12 @@ var NetBuz = {
             contentType: "application/json",
             data: JSON.stringify(newUser),
             dataType: "json",
-            success: success,
+            success: function (data) {
+                var onComplete = function () {
+                    success(data)
+                };
+                this.login(newUser.id, newUser.password, onComplete, onComplete);
+            },
             error: failure
         })
     },
@@ -179,6 +184,8 @@ var NetBuz = {
         })
     }
 };
+
+Object.freeze(NetBuz);
 
 function queryParams() {
     var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
