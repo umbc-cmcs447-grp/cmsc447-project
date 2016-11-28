@@ -65,14 +65,15 @@ function validate()
             alert("password missmatch");
             return false;
         }
-        createUser(firstname, lastname, username, password1);
+    createUser(firstname, lastname, username, password1);
    return true;
 }
 
 function createUser(firstname, lastname, username, password1)
 {
-    var newUser = {id: username , password: password1, firstname:firstname, lastname:firstname};
+    var newUser = new NetBuz.NewUser(username, password1, firstname, firstname);
 
+    console.log("here");
     function success()
     {
         //NetBuz.login(username, password);
