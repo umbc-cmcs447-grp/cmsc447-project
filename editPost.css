@@ -34,6 +34,10 @@ li {
 	cursor: default;
 }
 
+fieldset{
+	border: none;
+}
+
 ul.unordered_list{
 	list-style-type: disc;
 	margin-left: 30px;

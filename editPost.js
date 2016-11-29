@@ -4,6 +4,7 @@ var NB={};
 
 NB.myPosts=[];
 NB.postIndex=null;
+NB.fieldset=null;
 
 NB.ParseForm=(formID)=>{
   return $("#"+formID)
@@ -53,6 +54,7 @@ NB.updateLoggedInView=(isLoggedIn)=>{
 
 NB.gotoEditFormPage=(post)=>{
   NB.fillForm("edit_post", post);
+  NB.fieldset.prop("disabled",false);
   $(".my-post-list-page").hide();
   $(".edit-form-page").show();
 }
@@ -64,6 +66,7 @@ NB.gotoMyPostListPage=()=>{
 }
 
 NB.handleEditFormUpdateButton=()=>{
+  NB.fieldset.prop("disabled",true);
   var formData= NB.ParseForm("edit_post");
   var postId= NB.myPosts[NB.postIndex]&&NB.myPosts[NB.postIndex].postId;
   var success=()=>{
@@ -76,12 +79,14 @@ NB.handleEditFormUpdateButton=()=>{
   }
   var failure=()=>{
     alert("Error");
+    NB.fieldset.prop("disabled",false);
   }
   NetBuz.modifyPost(postId, formData, success, failure);
 }
 
 NB.handleEditFormRemoveButton=()=>{
-  var postId= NB.myPosts[NB.postIndex].postId;
+  NB.fieldset.prop("disabled",true);
+  var postId= NB.myPosts[NB.postIndex]&&NB.myPosts[NB.postIndex].postId;
   var success=()=>{
     alert("post deleted");
     NB.postIndex=null;
@@ -92,6 +97,7 @@ NB.handleEditFormRemoveButton=()=>{
   }
   var failure=()=>{
     alert("Error");
+    NB.fieldset.prop("disabled",false);
   }
   NetBuz.deletePost(postId, success, failure);
 }
@@ -108,6 +114,7 @@ NB.handleLogout=()=>{
 
 //this is the app entry point
 $(()=>{
+  NB.fieldset=$("#edit_post fieldset");
   var loggedIn=NetBuz.getLoggedInId();
   if(loggedIn){
     NB.updateLoggedInView(true);

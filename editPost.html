@@ -38,6 +38,7 @@
 
         <form class="edit-form-page" id="edit_post" onsubmit="NB.handleEditFormUpdateButton(); return false;">
 					<h1>Edit My Post</h1>
+					<fieldset>
   					<table class="table">
               <tbody>
     						<tr>
@@ -70,13 +71,14 @@
     						<tr>
                   <td></td>
     							<td>
-    								<input class="btn btn-default" type="submit" value="Update"></div>
-    								<div class="btn btn-default" onclick="NB.handleEditFormRemoveButton()">Remove</div>
-                    <div class="btn btn-default" onclick="NB.handleEditFormCancelButton()">Cancel</div>
+    								<input class="btn btn-default" type="submit" value="Update">
+    								<input class="btn btn-default" type="button" onclick="NB.handleEditFormRemoveButton()" value="Remove">
+                    <input class="btn btn-default" type="button" onclick="NB.handleEditFormCancelButton()" value="Cancel">
     							</td>
     						</tr>
               </tbody>
   					</table>
+					</fieldset>
   			</form>
 			</div>
 		</div>
