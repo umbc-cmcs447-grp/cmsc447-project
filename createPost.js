@@ -36,3 +36,7 @@ function validation(){
 function empty(str){
     return (!str || 0 === str.length || /^\s*$/.test(str))
 }
+
+function resetForm(){
+    document.getElementById("createForm").reset();
+}

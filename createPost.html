@@ -4,6 +4,8 @@
 		<title>Request Form</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="homepage.css" />
+		<script src="./assets/js/main.js"></script>
+        <script type="text/javascript" src="createPost.js"></script>
 	</head>
 	<body>
 	
@@ -27,11 +29,12 @@
 				</div>
 				<br />
 				<div>
-					<form method="post" name="request" action="">
+
+					<form id="createForm" method="post" name="request" action="">
 						<div class="options">
 							<div class="option">
 								Name of the Post: <input type="text" id="title" name="tat_style" /><br />
-					
+								<br/>
 								Category of the post:<select class="resize" id="category" name="category">
 									<option value="sellBook">Selling Book</option>
 									<option value="tutor">Tutoring</option>
@@ -51,8 +54,8 @@
 							</div>
 							<br />
 							<div class="option">
-								<input class="btn btn-default" type="submit" value="Submit" />
-								<input class="btn btn-default" type="reset" value="Clear" />
+								<input class="btn btn-default" type="submit" value="Submit" onclick="return validation()"/>
+								<input class="btn btn-default" type="reset" value="Clear" onclick="resetForm()"/>
 							</div>
 						</div>
 					</form>
