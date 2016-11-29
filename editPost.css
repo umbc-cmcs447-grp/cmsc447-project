@@ -31,7 +31,7 @@ li {
 
 #my_posts li:hover{
 	color: red;
-	cursor: default;
+	cursor: pointer;
 }
 
 fieldset{

@@ -6,7 +6,7 @@ NB.myPosts=[];
 NB.postIndex=null;
 NB.fieldset=null;
 
-NB.ParseForm=(formID)=>{
+NB.parseForm=(formID)=>{
   return $("#"+formID)
     .serializeArray()
     .reduce((obj,ele)=>{
@@ -26,10 +26,16 @@ NB.getMyPostsFromServer=(callback)=>{
   if(!userID){
     return;
   }
-  NetBuz.searchPosts([userID],[],[],(data)=>{
-    NB.myPosts=data;
-    callback(data);
-  });
+  NetBuz.searchPosts([userID],[],[],
+    (data)=>{
+      NB.myPosts=data;
+      callback(data);
+    },
+    ()=>{
+      NB.myPosts=[];
+      callback([]);
+    }
+  );
 }
 
 NB.updateMyPostList=(posts)=>{
@@ -66,14 +72,13 @@ NB.gotoMyPostListPage=()=>{
 }
 
 NB.handleEditFormUpdateButton=()=>{
-  NB.fieldset.prop("disabled",true);
-  var formData= NB.ParseForm("edit_post");
+  var formData= NB.parseForm("edit_post");
   var postId= NB.myPosts[NB.postIndex]&&NB.myPosts[NB.postIndex].postId;
+  NB.fieldset.prop("disabled",true);
   var success=()=>{
     alert("post updated");
     NB.postIndex=null;
     NB.getMyPostsFromServer(()=>{
-      NB.updateMyPostList();
       NB.gotoMyPostListPage();
     });
   }
@@ -91,7 +96,6 @@ NB.handleEditFormRemoveButton=()=>{
     alert("post deleted");
     NB.postIndex=null;
     NB.getMyPostsFromServer(()=>{
-      NB.updateMyPostList();
       NB.gotoMyPostListPage();
     });
   }
