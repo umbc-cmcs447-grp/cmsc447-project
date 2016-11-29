@@ -1,34 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<title>Login page</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="homepage.css" />
-	<script type="text/javascript" src="login.js"> </script>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="logout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./login.js"></script>
+	</head>
 	<body>
-		<ul class="logo">
-	<li class="logo-text" >NetBuz</li>
-  <li><a href="createAccount.html">Register</a></li>
-</ul>
-	
-<ul>
-  <li><a class="active" href="index.html">HOME</a></li>
-  <li><a href="login.html">CREATE POST</a></li>
-  <li><a href="login.html">EDIT/REMOVE POST</a></li>
-  <li><a href="login.html">SEARCH POST</a></li>
-</ul>
-			
-			<h3>Please enter your username and password to login</h3>
-				<form method="post" action="">
-				<tr>
-					<td>User Name: <input type = "text" id="username" name = "username" /> </td><br />
-					<td>Password: <input type = "password" id="password" name = "password" /></td> <br /><br/><br />
-				</tr>
-				<tr class="options">
-					<td><input class="btn btn-default" type = "submit" onclick="return validate();" value="login" />
-					<input class="btn btn-default" type = "reset" value="clear" /></td>
-				</tr>
-		</form>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
+
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
+
+			<div class="data">
+
+				<form class="show-when-logged-out" onsubmit="handleLogin(); return false;">
+					<h3>Please enter your username and password to login</h3>
+					<fieldset id="form_fieldset">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<label>UMBC ID: </label>
+									</td>
+									<td>
+										<input type = "text" id="user_id" name = "user_id" required/>
+									</td>
+								<tr>
+									<td>
+										<label>Password: </label>
+									</td>
+									<td>
+										<input type = "password" id="password" name = "password" required/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<div>
+							<input class="btn btn-default" type = "submit" value="login" />
+							<input class="btn btn-default" type = "reset" value="clear" />
+						</div>
+					</fieldset>
+				</form>
+
+				<div class="show-when-logged-in" id="logged_in_message">
+
+				</div>
+
+			</div>
+		</div>
 	</body>
 </html>

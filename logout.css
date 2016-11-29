@@ -9,9 +9,10 @@ body{
   width: 50%;
 	margin:auto;
 }
-textarea{
-	resize: none;
+fieldset{
+	border: none;
 }
+
 ul {
     list-style-type: none;
     margin: 0;

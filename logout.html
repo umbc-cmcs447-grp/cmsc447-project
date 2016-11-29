@@ -24,22 +24,22 @@
 			</ul>
 
 			<div class="data">
-        <p id="message"></p>
+        <p id="message">Logging out ...</p>
 			</div>
 		</div>
+		<script>
+			NetBuz.logout(
+				()=>{
+					$("#message").text("You have been logged out successfully.");
+					$(".show-when-logged-in").hide();
+					$(".show-when-logged-out").show();
+				},
+				()=>{
+					$("#message").text("An error occurred. You might not have been completely logged out.");
+					$(".show-when-logged-in").show();
+					$(".show-when-logged-out").hide();
+				}
+			);
+		</script>
 	</body>
-  <script>
-    NetBuz.logout(
-      ()=>{
-        $("#message").text("You have been logged out successfully.");
-        $(".show-when-logged-in").hide();
-        $(".show-when-logged-out").show();
-      },
-      ()=>{
-        $("#message").text("An error occurred. You might not have been completely logged out.");
-        $(".show-when-logged-in").show();
-        $(".show-when-logged-out").hide();
-      }
-    );
-  </script>
 </html>
