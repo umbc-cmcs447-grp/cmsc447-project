@@ -32,8 +32,8 @@ const handleLogin=()=>{
 				alert("Incorrect ID or Password.");
 			}else{
 				alert("An error occurred. You are not logged in.");
-				fieldset.disabled=false;
 			}
+			fieldset.disabled=false;
 		}
 	);
 	return false;
