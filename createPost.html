@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Create A Post</title>
+		<title>Request Form</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="homepage.css" />
 	</head>
@@ -30,22 +30,20 @@
 					<form method="post" name="request" action="">
 						<div class="options">
 							<div class="option">
-								Name of the Post: <input type="text" id="name" name="tat_style" /><br />
+								Name of the Post: <input type="text" id="title" name="tat_style" /><br />
 					
 								Category of the post:<select class="resize" id="category" name="category">
-									<option value="sellbook">Selling Book</option>
+									<option value="sellBook">Selling Book</option>
 									<option value="tutor">Tutoring</option>
-									<option value="selllaptop">Selling laptop</option>
+									<option value="sellLaptop">Selling laptop</option>
 									<option value="mechanic">Auto Mechanic</option>
 								</select><br />
-							Availability<input type="date" id="availability" name="availability"/><br />
-							Select a time:<input type="time" id="time" name="time">
   
 							</div>
   
 							<div class="option">
 								Write a description:<br />
-								<textarea id="description" name="tat_description" placeholder="Describe your post..."></textarea>
+								<textarea id="body" name="tat_description" placeholder="Describe your post..."></textarea>
 							</div>
 							<div class="option">
 								Upload reference photo: 
