@@ -65,7 +65,7 @@ NB.gotoMyPostListPage=()=>{
 
 NB.handleEditFormUpdateButton=()=>{
   var formData= NB.ParseForm("edit_post");
-  var postId= NB.myPosts[NB.postIndex].postId;
+  var postId= NB.myPosts[NB.postIndex]&&NB.myPosts[NB.postIndex].postId;
   var success=()=>{
     alert("post updated");
     NB.postIndex=null;

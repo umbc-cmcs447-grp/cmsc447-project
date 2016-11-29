@@ -13,7 +13,7 @@ Donnell: create post (page and validation)
 Tommy: search post
 
 
-Chen: edit post, delete post, logout
+Chen: edit post, delete post, logout, login
 
 
 What's Left:
