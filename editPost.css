@@ -127,6 +127,16 @@ p.warning{
   background: #77a198;
 }
 
+.btn-small{
+	border: 0;
+	background: #648880;
+	padding: 5px 9px;
+	font-size: 14px;
+}
+.btn-small:hover {
+  background: #77a198;
+}
+
 .btn {
   border-radius: 5px;
   color: #fff;

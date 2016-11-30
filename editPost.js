@@ -41,6 +41,7 @@ NB.getMyPostsFromServer=(callback)=>{
 
 NB.updateMyPostList=(posts)=>{
   var myPostTable=$("#post_table tbody");
+  $("#number_of_posts").text(posts.length);
   myPostTable.empty();
   posts.forEach((post,index)=>{
     var timeString=new Date(Number(post.lastModified)).toLocaleString("en-US");
@@ -142,6 +143,10 @@ NB.sortListBy=(prop, clickedEle)=>{
     NB.myPosts.sort((a,b)=>a[prop]<b[prop]);
   }
   NB.updateMyPostList(NB.myPosts);
+}
+
+NB.refreshPosts=()=>{
+  NB.getMyPostsFromServer(NB.updateMyPostList);
 }
 
 //this is the app entry point
