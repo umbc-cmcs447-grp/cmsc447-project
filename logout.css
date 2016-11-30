@@ -1,11 +1,10 @@
 body{
 	background-color: orange;
 	width: auto;
-	min-width: 600px;
 	overflow: scroll;
 }
 #root{
-	min-width: 600px;
+	min-width: 800px;
   width: 50%;
 	margin:auto;
 }

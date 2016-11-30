@@ -1,12 +1,11 @@
 body{
 	background-color: orange;
 	width: auto;
-	min-width: 600px;
 	overflow: scroll;
 }
 #root{
-	min-width: 600px;
-  width: 50%;
+	min-width: 800px;
+  width: 60%;
 	margin:auto;
 }
 textarea{
@@ -22,16 +21,6 @@ ul {
 
 li {
     float: left;
-}
-
-#my_posts li{
-	color: blue;
-	float: none;
-}
-
-#my_posts li:hover{
-	color: red;
-	cursor: pointer;
 }
 
 fieldset{
@@ -168,4 +157,70 @@ footer{
 	display: none;
 	background-color: #f44336;
 	color: white;
+}
+
+#post_table{
+	margin:auto;
+	background-color: rgb(150,150,150);
+	table-layout:fixed;
+}
+
+#post_table > thead{
+	font-size: 14px;
+	color: white;
+	background-color: grey;
+	display: table;
+	table-layout:fixed;
+}
+
+#post_table > thead  th{
+	border-right: 2px solid rgb(150,150,150);
+}
+
+#post_table > tbody{
+	font-size: 12px;
+	background-color: rgb(240,240,240);
+	display: block;
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#post_table > tbody > tr{
+	overflow: hidden;
+	display: table;
+	table-layout:fixed;
+}
+
+#post_table > tbody > tr:hover{
+
+	background-color: rgb(200,200,230);
+	cursor:pointer;
+}
+#post_table > tbody > tr > td{
+	height: 25px;
+	padding-left: 5px;
+}
+#post_table > tbody > tr > td > div{
+	height:15px;
+	overflow: hidden;
+}
+
+#post_table .number{
+	width: 25px;
+}
+#post_table .title{
+	width: 300px;
+}
+#post_table .status{
+	width: 100px;
+}
+#post_table .category{
+	width:100px;
+}
+#post_table .time{
+	width: 150px;
+}
+#post_table .scroll{
+	width: 1em;
 }

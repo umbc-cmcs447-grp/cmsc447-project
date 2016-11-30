@@ -39,10 +39,19 @@ NB.getMyPostsFromServer=(callback)=>{
 }
 
 NB.updateMyPostList=(posts)=>{
-  var myPostList=$("#my_posts");
-  myPostList.empty();
-  posts.forEach((post)=>{
-    myPostList.append("<li><u>"+post.title+"</u></li>");
+  var myPostTable=$("#post_table tbody");
+  myPostTable.empty();
+  posts.forEach((post,index)=>{
+    var timeString=new Date(Number(post.lastModified)).toLocaleString("en-US");
+    myPostTable.append(
+      "<tr>"+
+        "<td><div class='number'>"+(index+1)+"</div></td>"+
+        "<td><div class='title'>"+post.title+"</div></td>"+
+        "<td><div class='status'>"+post.status+"</div></td>"+
+        "<td><div class='category'>"+post.category+"</div></td>"+
+        "<td><div class='time'>"+timeString+"</div></td>"+
+      "</tr>"
+      );
   });
 
 }
@@ -123,7 +132,7 @@ $(()=>{
   if(loggedIn){
     NB.updateLoggedInView(true);
     NB.getMyPostsFromServer(NB.updateMyPostList);
-    $("#my_posts").on("click", "li", function(event){
+    $("#post_table tbody").on("click", "tr", function(event){
       NB.postIndex=$(event.currentTarget).index();
       NB.gotoEditFormPage(NB.myPosts[NB.postIndex]);
     });
