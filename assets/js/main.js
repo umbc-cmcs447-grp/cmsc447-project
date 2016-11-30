@@ -21,9 +21,14 @@ var NetBuz = {
         return localStorage.getItem(NetBuz.userStorageKey)
     },
 
-    setAuthToken: function (id, data) {
+    setUserAuthToken: function (id, data) {
         localStorage.setItem(NetBuz.authStorageKey, id + ":" + data.authToken);
         localStorage.setItem(NetBuz.userStorageKey, id)
+    },
+
+    removeUserAuthToken: function () {
+        localStorage.removeItem(NetBuz.authStorageKey);
+        localStorage.removeItem(NetBuz.userStorageKey);
     },
 
     setAuthHeader: function (request) {
@@ -69,7 +74,7 @@ var NetBuz = {
             }),
             dataType: "json",
             success: function (data) {
-                NetBuz.setAuthToken(id, data);
+                NetBuz.setUserAuthToken(id, data);
                 if (success != null) {
                     success(data);
                 }
@@ -86,13 +91,19 @@ var NetBuz = {
                 NetBuz.setAuthHeader(request)
             },
             success: function () {
-                localStorage.removeItem(NetBuz.authStorageKey);
-                localStorage.removeItem(NetBuz.userStorageKey);
+                NetBuz.removeUserAuthToken();
                 if (success != null) {
                     success();
                 }
             },
-            error: failure
+            error: function (request, textStatus, errorThrown) {
+                if (request.status == 403) {
+                    NetBuz.removeUserAuthToken()
+                }
+                if (failure != null) {
+                    failure(request, textStatus, errorThrown)
+                }
+            }
         })
     },
 
@@ -106,7 +117,7 @@ var NetBuz = {
                 newPassword: newPass
             }),
             success: function (data) {
-                NetBuz.setAuthToken(id, data);
+                NetBuz.setUserAuthToken(id, data);
                 if (success != null) {
                     success(data);
                 }
