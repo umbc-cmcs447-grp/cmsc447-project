@@ -1,71 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- dynamic.html 
- -->
-<html xmlns = "http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Create Account</title>
-        <link rel="stylesheet" type="text/css" href="homepage.css" />
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<head>
+    <title>Create Account</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="logout.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="./assets/js/main.js"></script>
-        <script type = "text/javascript"  src = "createAccount.js" >
-    </script>
-    </head>
+    <script type="text/javascript" src="createAccount.js"></script>
+</head>
+
 <body>
+    <div id="root">
+        <ul class="logo">
+            <li class="logo-text">NetBuz</li>
+            <li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+            <li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+            <li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+        </ul>
 
-<ul class="logo">
-	<li class="logo-text" >NetBuz</li>
-	<li><a class="active" href="login.html">login</a></li>
-</ul>
-	
-<ul>
-  <li><a class="active" href="index.html">HOME</a></li>
-  <li><a href="#CREATE POST">CREATE POST</a></li>
-  <li><a href="#EDIT POST">EDIT/REMOVE POST</a></li>
-  <li><a href="#DELETE POST">SEARCH POST</a></li>
-</ul>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="createPost.html">CREATE POST</a></li>
+            <li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+            <li><a href="search.html">SEARCH</a></li>
+        </ul>
 
-<form>
- <fieldset>
-	<h1>registration</h1>
-	<div>
-	<form>
-	<table>
-	<tr>
-		<td><label style="color:indigo;" for="user">* First Name: </label></td>
-		<td><input  class="input" type="text" name="uname" placeholder="First Name" id="firstname" size="30" maxlength="16"  autocomplete="on"/></td>
-	</tr>
-	<tr>
-		<td><label  style="color:indigo;" for="user">* Last Name: </label></td>
-		<td><input class="inputtag" type="text" name="uname" placeholder="Last Name" id="lastname" size="30" maxlength="16"  autocomplete="on"/></td>
-	</tr>
-	<tr>
-		<td><label style="color:indigo;" for="user">* Email: </label></td>
-		<td><input class="inputtag" type="email" name="email" placeholder="username@umbc.edu" id= "email" size="30" autocomplete="on" id="user" /></td>
-	</tr>
-	<tr>
-		<td><label style="color:indigo;" for="user">* Username: </label></td>
-		<td><input type = "text" name = "uname" placeholder="Username" id="username" autocomplete="on"  size = "25" min="10" maxlength="25" id="user"/></td>
-	</tr>
-	
-	<tr>
-		<td><label style="color:brown;" for="pass">* Password: </label></td>
-		<td><input type = "password" name = "mypass" placeholder="password" id="password" autocomplete="off" size = "10" maxlength="64"/></td>
-	</tr>
-	<tr class="submitinput">
-		<td><label style="color:brown;" for="pass">* Re-password: </label></td>
-		<td><input type = "password" name = "mypass" placeholder="password" id="repassword" autocomplete="off" size = "10" maxlength="64"/></td>
-	</tr>
-	<tr>
-		<td><input class="btn btn-default" type = "button" value="Submit form" onclick="return validate();" />
-		<input class="btn btn-default" type = "reset" value="Reset form" /></td>
-	</tr>
-		</table>
-	</div>
- </fieldset>
-</form>
+        <div class="data">
+            <div class="show-when-logged-in" id="logged_in_message">
+
+            </div>
+
+            <form class="show-when-logged-out">
+                <fieldset id="form_fieldset">
+                    <h1>Registration</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label style="color:indigo;" for="user">* First Name: </label></td>
+                                <td><input class="input" type="text" name="firstname" placeholder="First Name" id="firstname" size="30" maxlength="16" autocomplete="on" /></td>
+                            </tr>
+                            <tr>
+                                <td><label style="color:indigo;" for="user">* Last Name: </label></td>
+                                <td><input class="inputtag" type="text" name="lastname" placeholder="Last Name" id="lastname" size="30" maxlength="16" autocomplete="on" /></td>
+                            </tr>
+                            <!--tr>
+                              <td><label style="color:indigo;" for="user">* Email: </label></td>
+                              <td><input class="inputtag" type="email" name="email" placeholder="username@umbc.edu" id="email" size="30" autocomplete="on" id="user" /></td>
+                          </tr-->
+                            <tr>
+                                <td><label style="color:indigo;" for="user">* UMBC ID: </label></td>
+                                <td><input type="text" name="userid" placeholder="ID" id="username" autocomplete="on" size="25" min="10" maxlength="25" id="user" /></td>
+                            </tr>
+
+                            <tr>
+                                <td><label style="color:brown;" for="pass">* Password: </label></td>
+                                <td><input type="password" name="pass" placeholder="password" id="password" autocomplete="off" size="10" maxlength="64" /></td>
+                            </tr>
+                            <tr class="submitinput">
+                                <td><label style="color:brown;" for="pass">* Re-password: </label></td>
+                                <td><input type="password" name="repass" placeholder="password" id="repassword" autocomplete="off" size="10" maxlength="64" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <input class="btn btn-default" type="button" value="Submit form" onclick="return validate();" />
+                    <input class="btn btn-default" type="reset" value="Reset form" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+
 
 </body>
+
 </html>
