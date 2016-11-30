@@ -31,10 +31,10 @@
 						<thead>
 							<tr>
 								<th><div class="number">#</div></th>
-								<th><div class="title">Title</div></th>
-								<th><div class="status">Status</div></th>
-								<th><div class="category">Category</div></th>
-								<th><div class="time">Last Modified</div></th>
+								<th><div class="title" onclick="NB.sortListBy('title',this)">Title<div class="order">&minus;</div></div></th>
+								<th><div class="status" onclick="NB.sortListBy('status',this)">Status<div class="order">&minus;</div></div></th>
+								<th><div class="category" onclick="NB.sortListBy('category',this)">Category<div class="order">&minus;</div></div></th>
+								<th><div class="time" onclick="NB.sortListBy('lastModified',this)">Last Modified<div class="order">&minus;</div></div></th>
 								<th><div class="scroll"></div></th>
 							</tr>
 						</thead>

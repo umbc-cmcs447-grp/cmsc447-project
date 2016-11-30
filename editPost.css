@@ -208,19 +208,31 @@ footer{
 
 #post_table .number{
 	width: 25px;
+	cursor:default;
 }
 #post_table .title{
 	width: 300px;
+	cursor: pointer;
 }
 #post_table .status{
 	width: 100px;
+	cursor: pointer;
 }
 #post_table .category{
 	width:100px;
+	cursor: pointer;
 }
 #post_table .time{
 	width: 150px;
+	cursor: pointer;
 }
 #post_table .scroll{
 	width: 1em;
+	cursor: default;
+}
+
+#post_table .order{
+	float: right;
+	padding-right: 5px;
+	padding-left: 5px;
 }

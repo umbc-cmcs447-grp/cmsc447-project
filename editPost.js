@@ -26,6 +26,7 @@ NB.getMyPostsFromServer=(callback)=>{
   if(!userID){
     return;
   }
+  $("#post_table>thead .order").text('\u2212');
   NetBuz.searchPosts([userID],[],[],
     (data)=>{
       NB.myPosts=data;
@@ -123,6 +124,24 @@ NB.handleEditFormCancelButton=()=>{
 
 NB.handleLogout=()=>{
   NetBuz.logout(()=>{NB.updateLoggedInView(false)}, ()=>{alert("You have failed to log out.")});
+}
+
+NB.sortListBy=(prop, clickedEle)=>{
+  var increasing="\u2228"; //v
+  var decreasing="\u2227";//^
+  var uniform="\u2212"; //-
+  var orderText=$(clickedEle).children(".order").first();
+  if(orderText.text()===uniform||orderText.text()===decreasing){
+    $("#post_table>thead .order").text(uniform);
+    orderText.text(increasing);
+    NB.myPosts.sort((a,b)=>a[prop]>b[prop]);
+  }
+  else if(orderText.text()===increasing){
+    $("#post_table>thead .order").text(uniform);
+    orderText.text(decreasing);
+    NB.myPosts.sort((a,b)=>a[prop]<b[prop]);
+  }
+  NB.updateMyPostList(NB.myPosts);
 }
 
 //this is the app entry point
