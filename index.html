@@ -1,29 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>NetBuz Home</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="logout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
-<!-- dynamic.html 
- -->
-<html xmlns = "http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Create Account</title>
-        <link rel="stylesheet" type="text/css" href="homepage.css" />
-    </head>
-<body>
+			<ul>
+				<li><a class="active" href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
 
-<ul class="logo">
-	<li class="logo-text" >NetBuz</li>
-	<li><a class="active" href="login.html">login</a></li>
-  <li><a href="createAccount.html">Register</a></li>
-</ul>
-	
-<ul>
-  <li><a class="active" href="homepage.html">HOME</a></li>
-  <li><a href="createPost.html">CREATE POST</a></li>
-  <li><a href="editPost.html">EDIT/REMOVE POST</a></li>
-  <li><a href="search.html">SEARCH POST</a></li>
-</ul>
+			<div class="data">
 
+        <p>Welcome to the homepage.</p>
 
-</body>
+			</div>
+		</div>
+		<script>
+			(()=>{
+        var loggedInID = NetBuz.getLoggedInId();
+				if(loggedInID){
+						$(".show-when-logged-in").show();
+						$(".show-when-logged-out").hide();
+				}
+				else{
+						$(".show-when-logged-in").hide();
+						$(".show-when-logged-out").show();
+				}
+			})();
+		</script>
+	</body>
 </html>
