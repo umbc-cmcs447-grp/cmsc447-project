@@ -29,18 +29,26 @@
 		</div>
 		<script>
 			(()=>{
-				NetBuz.logout(
-					()=>{
-						$("#message").text("You have been logged out successfully.");
-						$(".show-when-logged-in").hide();
-						$(".show-when-logged-out").show();
-					},
-					()=>{
-						$("#message").text("An error occurred. You might not have been completely logged out.");
-						$(".show-when-logged-in").show();
-						$(".show-when-logged-out").hide();
-					}
-				);
+				if(!NetBuz.getLoggedInId()){
+					$("#message").text("You appeared to be already logged out.");
+					$(".show-when-logged-in").hide();
+					$(".show-when-logged-out").show();
+					NetBuz.removeUserAuthToken();
+				}
+				else{
+					NetBuz.logout(
+						()=>{
+							$("#message").text("You have been logged out successfully.");
+							$(".show-when-logged-in").hide();
+							$(".show-when-logged-out").show();
+						},
+						()=>{
+							$("#message").text("An error occurred. You might not have been completely logged out.");
+							$(".show-when-logged-in").show();
+							$(".show-when-logged-out").hide();
+						}
+					);
+				}
 			})();
 		</script>
 	</body>

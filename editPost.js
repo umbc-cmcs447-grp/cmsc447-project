@@ -93,8 +93,13 @@ NB.handleEditFormUpdateButton=()=>{
       NB.gotoMyPostListPage();
     });
   }
-  var failure=()=>{
-    alert("Error");
+  var failure=(req)=>{
+    if(req.status===403){
+      $("#login").show();
+    }
+    else{
+      alert("Error");
+    }
     NB.fieldset.prop("disabled",false);
   }
   NetBuz.modifyPost(postId, formData, success, failure);
@@ -110,8 +115,13 @@ NB.handleEditFormRemoveButton=()=>{
       NB.gotoMyPostListPage();
     });
   }
-  var failure=()=>{
-    alert("Error");
+  var failure=(req)=>{
+    if(req.status===403){
+      $("#login").show();
+    }
+    else{
+      alert("Error");
+    }
     NB.fieldset.prop("disabled",false);
   }
   NetBuz.deletePost(postId, success, failure);
@@ -122,6 +132,30 @@ NB.handleEditFormCancelButton=()=>{
   NB.gotoMyPostListPage();
 }
 
+NB.handleModalLogin=()=>{
+	var password = document.getElementById("password").value;
+	var userID = document.getElementById("user_id").value;
+	var fieldset=document.getElementById("login_fieldset");
+
+	fieldset.disabled=true;
+	NetBuz.login(userID, password,
+		()=>{
+			var loggedInID=NetBuz.getLoggedInId();
+      $("#login").hide();
+      $("#login form")[0].reset();
+      fieldset.disabled=false;
+		},
+		(xhr)=>{
+			if(xhr.status===401){
+				alert("Incorrect ID or Password.");
+			}else{
+				alert("Unable to log in right now.");
+			}
+			fieldset.disabled=false;
+		}
+	);
+	return false;
+}
 
 NB.handleLogout=()=>{
   NetBuz.logout(()=>{NB.updateLoggedInView(false)}, ()=>{alert("You have failed to log out.")});

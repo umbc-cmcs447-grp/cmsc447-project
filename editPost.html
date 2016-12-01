@@ -96,6 +96,39 @@
   					</table>
 					</fieldset>
   			</form>
+				<div class="modal" id="login">
+					<div class="modal-content">
+						<form onsubmit="NB.handleModalLogin(); return false;">
+							<h3>Your Session has expired. Please log in again.</h3>
+							<fieldset id="login_fieldset">
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<label>UMBC ID: </label>
+											</td>
+											<td>
+												<input type = "text" id="user_id" name = "user_id" required/>
+											</td>
+										<tr>
+											<td>
+												<label>Password: </label>
+											</td>
+											<td>
+												<input type = "password" id="password" name = "password" required/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<br />
+								<div>
+									<input class="btn btn-default" type = "submit" value="login" />
+									<input class="btn btn-default" type = "reset" value="clear" />
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
