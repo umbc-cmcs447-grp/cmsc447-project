@@ -53,7 +53,7 @@ function validate()
 
     if(result4 == false)
         {
-            alert("password is not valid");
+            alert("Password must be at least 10 characters.");
             return false;
         }
     if(result5 == false)
