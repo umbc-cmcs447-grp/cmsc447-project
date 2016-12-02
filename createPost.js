@@ -1,10 +1,23 @@
+
+function updateLoggedInView=(isLoggedIn)=>{
+  if(isLoggedIn){
+    $(".show-when-logged-in").show();
+    $(".show-when-logged-out").hide();
+  }
+  else{
+    $(".show-when-logged-in").hide();
+    $(".show-when-logged-out").show();
+  }
+}
+
 function createPost(title, body, category){
     var newPost = new NetBuz.NewPost(title, body, category);
 
     console.log("here");
 
     function success(){
-        alert("Post Successful");
+        $("#logged_in_message").text("Post created successfully");
+        updateLoggedInView(true);
     }
 
     function failure(){
@@ -30,6 +43,7 @@ function validation(){
     if(empty(category)){
         alert("Invalid Category. Try Again");
     }
+    createPost(title, body, category);
     return true;
 }
 
@@ -40,3 +54,15 @@ function empty(str){
 function resetForm(){
     document.getElementById("createForm").reset();
 }
+
+//entry point
+$(function(){
+  var loggedInDiv=$("#logged_in_message");
+  var loggedInID=NetBuz.getLoggedInId();
+  if(loggedInID){
+    loggedInDiv.text("You must be logged out to create an account.");
+    updateLoggedInView(true);
+  }else{
+    updateLoggedInView(false);
+  }
+});

@@ -1,63 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Request Form</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="homepage.css" />
-		<script src="./assets/js/main.js"></script>
-        <script type="text/javascript" src="createPost.js"></script>
-	</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Post</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="logout.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="createPost.js"></script>
+</head>
 	<body>
-	
-		<ul class="logo">
-			<li class="logo-text" >NetBuz</li>
-			<li><a class="active" href="logout.html">logout</a></li>
-		</ul>
-		<div class="container">
-		<div class="menu">
-		<ul>
-			<li><a class="active" href="index.html">HOME</a></li>
-			<li><a href="createPost.html">CREATE POST</a></li>
-			<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
-			<li><a href="search.html">SEARCH POST</a></li>
-		</ul>
-		</div>
-			
-			<div class="content">
-				<div class="title">
-					<h2>Create a new post</h2>
-				</div>
-				<br />
-				<div>
+		<div class="root">
+			<ul class="logo">
+	            <li class="logo-text">NetBuz</li>
+	            <li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+	            <li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+	            <li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+	        </ul>
 
-					<form id="createForm" method="post" name="request" action="">
-						<div class="options">
-							<div class="option">
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a class="active" href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH POST</a></li>
+			</ul>
+			<div class="data">
+				<div class="show-when-logged-out">
+					<p>You Must Be Logged In To Create A Post. Please Log In.</p>
+	            </div>
+				<div class="show-when-logged-in">
+					<div class="title">
+						<h2>Create a new post</h2>
+					</div>
+					<br />
+					<div class="show-when-logged-in" id="logged_in_message">
+
+	            	</div>
+					<form id="createForm" method="post" name="request" onsubmit="handlePost();">
 								Name of the Post: <input type="text" id="title" name="tat_style" /><br />
 								<br/>
 								Category of the post:<select class="resize" id="category" name="category">
-									<option value="sellBook">Selling Book</option>
-									<option value="tutor">Tutoring</option>
-									<option value="sellLaptop">Selling laptop</option>
-									<option value="mechanic">Auto Mechanic</option>
+									<option value="TEXTBOOKS">Textbooks</option>
+									<option value="TUTORING">Tutoring</option>
 								</select><br />
-  
-							</div>
-  
-							<div class="option">
 								Write a description:<br />
 								<textarea id="body" name="tat_description" placeholder="Describe your post..."></textarea>
-							</div>
-							<div class="option">
 								Upload reference photo: 
 								<input type="file" name="fileupload" value="fileupload" id="fileupload" />
-							</div>
-							<br />
-							<div class="option">
-								<input class="btn btn-default" type="submit" value="Submit" onclick="return validation()"/>
-								<input class="btn btn-default" type="reset" value="Clear" onclick="resetForm()"/>
-							</div>
-						</div>
+								<br />
+								<input class="btn btn-default" type="submit" value="Submit" onclick="return validation();"/>
+								<input class="btn btn-default" type="reset" value="Clear" onclick="resetForm();"/>
 					</form>
 				</div>
 			</div>
