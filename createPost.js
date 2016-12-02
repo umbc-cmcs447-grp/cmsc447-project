@@ -30,9 +30,9 @@ function createPost(title, body, category){
 
 function validation(){
 
-    var title = document.getElementByID("title").value;
-    var body = document.getElementByID("body").value;
-    var category = document.getElementByID("category").value;
+    var title = document.getElementById("title").value;
+    var body = document.getElementById("body").value;
+    var category = document.getElementById("category").value;
 
     if(empty(title)){
         alert("Invalid Title. Try Again");
@@ -69,4 +69,3 @@ $(function(){
     alert("not logged in");
   }
 });
-
