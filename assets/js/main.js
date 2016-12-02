@@ -1,6 +1,17 @@
 var NetBuz = {
     baseUrl: "http://localhost:9000",
 
+    Category: {
+        TUTORING: "TUTORING",
+        TEXTBOOKS: "TEXTBOOKS"
+    },
+
+    Status: {
+        OPEN: "OPEN",
+        CLOSED: "CLOSED",
+        IN_PROGRESS: "IN_PROGRESS"
+    },
+
     NewPost: function (title, body, category) {
         this.title = title;
         this.body = body;
@@ -80,6 +91,26 @@ var NetBuz = {
                 }
             },
             error: failure
+        })
+    },
+
+    validateAuth: function (success, failure) {
+        $.ajax({
+            type: 'POST',
+            url: NetBuz.baseUrl + "/users/" + NetBuz.getLoggedInId() + "/auth/validate",
+            dataType: "json",
+            beforeSend: function (request) {
+                NetBuz.setAuthHeader(request)
+            },
+            success: success,
+            error: function (request, textStatus, errorThrown) {
+                if (request.status == 403) {
+                    NetBuz.removeUserAuthToken()
+                }
+                if (failure != null) {
+                    failure(request, textStatus, errorThrown)
+                }
+            }
         })
     },
 
@@ -203,6 +234,12 @@ var NetBuz = {
 };
 
 Object.freeze(NetBuz);
+
+$(document).ready(function() {
+    if (NetBuz.getLoggedInId() != null) {
+        NetBuz.validateAuth()
+    }
+});
 
 function queryParams() {
     var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
