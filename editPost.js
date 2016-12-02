@@ -169,12 +169,12 @@ NB.sortListBy=(prop, clickedEle)=>{
   if(orderText.text()===uniform||orderText.text()===decreasing){
     $("#post_table>thead .order").text(uniform);
     orderText.text(increasing);
-    NB.myPosts.sort((a,b)=>a[prop]<b[prop]?-1:Number(a[prop]>b[prop]));
+    NB.myPosts.sort((a,b)=>(a[prop]>b[prop])-(a[prop]<b[prop]));
   }
   else if(orderText.text()===increasing){
     $("#post_table>thead .order").text(uniform);
     orderText.text(decreasing);
-    NB.myPosts.sort((a,b)=>a[prop]>b[prop]?-1:Number(a[prop]<b[prop]));
+    NB.myPosts.sort((a,b)=>(a[prop]<b[prop])-(a[prop]>b[prop]));
   }
   NB.updateMyPostList(NB.myPosts);
 }
