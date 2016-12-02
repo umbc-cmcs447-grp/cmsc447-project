@@ -33,18 +33,19 @@
 					</div>
 					<br />
 					<form id="createForm" method="" name="request" onsubmit="return false;">
-								Name of the Post: <input type="text" id="title" name="tat_style" /><br />
+								Name of the Post: <input type="text" id="title" name="title" /><br />
 								<br/>
-								Category of the post:<select class="resize" id="category" name="category">
+								Category of the post:
+								<select class="resize" id="category" name="category">
 									<option value="TEXTBOOKS">Textbooks</option>
 									<option value="TUTORING">Tutoring</option>
 								</select><br />
 								Write a description:<br />
-								<textarea id="body" name="tat_description" placeholder="Describe your post..."></textarea>
+								<textarea id="body" name="body" placeholder="Describe your post..."></textarea>
 								Upload reference photo:
 								<input type="file" name="fileupload" value="fileupload" id="fileupload" />
 								<br />
-								<input class="btn btn-default" type="submit" value="Submit" onclick="return validation();"/>
+								<input class="btn btn-default" type="submit" value="Submit"/>
 								<input class="btn btn-default" type="reset" value="Clear" onclick="resetForm();"/>
 					</form>
 				</div>
