@@ -1,5 +1,5 @@
 
-function updateLoggedInView=(isLoggedIn)=>{
+function updateLoggedInView(isLoggedIn){
   if(isLoggedIn){
     $(".show-when-logged-in").show();
     $(".show-when-logged-out").hide();
@@ -8,6 +8,7 @@ function updateLoggedInView=(isLoggedIn)=>{
     $(".show-when-logged-in").hide();
     $(".show-when-logged-out").show();
   }
+  alert("updateLoggedInView");
 }
 
 function createPost(title, body, category){
@@ -16,12 +17,13 @@ function createPost(title, body, category){
     console.log("here");
 
     function success(){
-        $("#logged_in_message").text("Post created successfully");
+        alert("Post Created Successfully");
+        resetForm();
         updateLoggedInView(true);
     }
 
     function failure(){
-    	alert("failed");
+    	alert("Failed to Create Post. Try Again");
     }
     NetBuz.createPost(newPost,success,failure);
 }
@@ -57,12 +59,14 @@ function resetForm(){
 
 //entry point
 $(function(){
-  var loggedInDiv=$("#logged_in_message");
+    alert("start");
   var loggedInID=NetBuz.getLoggedInId();
   if(loggedInID){
-    loggedInDiv.text("You must be logged out to create an account.");
     updateLoggedInView(true);
+    alert("logged in");
   }else{
     updateLoggedInView(false);
+    alert("not logged in");
   }
 });
+
