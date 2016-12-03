@@ -8,7 +8,6 @@ function updateLoggedInView(isLoggedIn){
     $(".show-when-logged-in").hide();
     $(".show-when-logged-out").show();
   }
-  alert("updateLoggedInView");
 }
 
 function createPost(title, body, category){
@@ -59,13 +58,10 @@ function resetForm(){
 
 //entry point
 $(function(){
-    alert("start");
   var loggedInID=NetBuz.getLoggedInId();
   if(loggedInID){
     updateLoggedInView(true);
-    alert("logged in");
   }else{
     updateLoggedInView(false);
-    alert("not logged in");
   }
 });
