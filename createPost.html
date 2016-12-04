@@ -33,19 +33,19 @@
 					</div>
 					<br />
 					<form id="createForm" method="" name="request" onsubmit="return false;">
-								Name of the Post: <input type="text" id="title" name="title" /><br />
+								Name of the Post: <br />
+								<input type="text" id="title" name="title" /><br />
 								<br/>
-								Category of the post:
+								Category of the post: <br />
 								<select class="resize" id="category" name="category">
 									<option value="TEXTBOOKS">Textbooks</option>
 									<option value="TUTORING">Tutoring</option>
-								</select><br />
+								</select><br /><br />
 								Write a description:<br />
-								<textarea id="body" name="body" placeholder="Describe your post..."></textarea>
-								Upload reference photo:
-								<input type="file" name="fileupload" value="fileupload" id="fileupload" />
+								<textarea id="body" name="body" rows="20" cols="70" placeholder="Describe your post..."></textarea>
 								<br />
-								<input class="btn btn-default" type="submit" value="Submit"/>
+								<br />
+								<input class="btn btn-default" type="submit" value="Submit" onclick="validation(); return false;"/>
 								<input class="btn btn-default" type="reset" value="Clear" onclick="resetForm();"/>
 					</form>
 				</div>
