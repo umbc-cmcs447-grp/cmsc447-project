@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Edit Post</title>
+		<title>Search Post</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="search.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -9,17 +9,42 @@
 		<script src="search.js"></script>
 	</head>
 	<body>
-				<div class="float-right show-when-logged-out"><a href="login.html">login</a></div>
-				<div class="float-right show-when-logged-in"><a href="logout.html">logout</a></div>
-				<div class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></div>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a class="active" href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
 
-				<a href="index.html">HOME</a>
-				<a href="createPost.html">CREATE POST</a>
-				<a class="active" href="editPost.html">EDIT/REMOVE POST</a>
-				<a href="search.html">SEARCH</a>
-
-				
+			<div class="data">
+				<div class="search-page">
+					<form id="search">
+						<label for="category">Category: </label>
+						<select  id="category" name="category" onchange="NB.getPostsFromServer()">
+							<option value="">All</option>
+							<option value="TEXTBOOKS">Textbooks</option>
+							<option value="TUTORING">Tutoring</option>
+						</select>
+						<label for="status">Status: </label>
+							<select id="status" name="status" onchange="NB.getPostsFromServer()">
+								<option value="">All</otion>
+								<option value="OPEN">Open</option>
+								<option value="CLOSED">Closed</option>
+								<option value="IN_PROGRESS">In progress</option>
+							</select>
+					</form>
+					<div>Number of posts: <span id="number_of_posts"></span>
+						<!--div class="btn btn-small" onclick="NB.refreshPosts()">&#x21BB</div-->
+					</div>
+					<br />
 					<table id="post_table">
 						<thead>
 							<tr>
@@ -35,40 +60,18 @@
 
 						</tbody>
 					</table>
-        </div>
-
-        				<div class="modal" id="login">
-					<div class="modal-content">
-						<form onsubmit="NB.handleModalLogin(); return false;">
-							<h3>Your Session has expired. Please log in again.</h3>
-							<fieldset id="login_fieldset">
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<label>UMBC ID: </label>
-											</td>
-											<td>
-												<input type = "text" id="user_id" name = "user_id" required/>
-											</td>
-										<tr>
-											<td>
-												<label>Password: </label>
-											</td>
-											<td>
-												<input type = "password" id="password" name = "password" required/>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								<br />
-								<div>
-									<input class="btn btn-default" type = "submit" value="login" />
-									<input class="btn btn-default" type = "reset" value="clear" />
-								</div>
-							</fieldset>
-						</form>
-					</div>
 				</div>
+				<div class="post-detail-page" id="post_detail">
+					<h3 class="title"></h3>
+					<div>Category: <span class="category"></span></div>
+					<div>Status: <span class="status"></span></div>
+					<div>By: <span class="authorId"></span> <button onclick="NB.handleContactButton()">contact</button></div>
+					<div>Last Modified:<span class="lastModified"></span></div>
+					<br />
+					<div class="body"></div>
+					<button class="btn btn-default" onclick="NB.handleReturnButton()">Return to Search</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

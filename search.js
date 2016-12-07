@@ -21,16 +21,20 @@ NB.fillForm=(formID, formData)=>{
   }
 }
 
-NB.getPostsFromServer=(callback)=>{
+NB.getPostsFromServer=()=>{
+  var params=NB.parseForm("search");
+  var users=params.user?[params.user]:[];
+  var categories=params.category?[params.category]:[];
+  var statuses=params.status?[params.status]:[];
   $("#post_table>thead .order").text('\u2212');
-  NetBuz.searchPosts([],[],[],
+  NetBuz.searchPosts(users,categories,statuses,
     (data)=>{
       NB.posts=data;
-      callback(data);
+      NB.updateMyPostList(data);
     },
     ()=>{
       NB.posts=[];
-      callback([]);
+      NB.updateMyPostList([]);
     }
   );
 }
@@ -65,17 +69,16 @@ NB.updateLoggedInView=(isLoggedIn)=>{
   }
 }
 
-NB.gotoEditFormPage=(post)=>{
-  NB.fillForm("edit_post", post);
-  NB.fieldset.prop("disabled",false);
-  $(".my-post-list-page").hide();
-  $(".edit-form-page").show();
+NB.gotoPostDetailPage=(post)=>{
+  NB.showPost(post);
+  $(".search-page").hide();
+  $(".post-detail-page").show();
 }
 
 NB.gotoMyPostListPage=()=>{
   NB.updateMyPostList(NB.posts);
-  $(".edit-form-page").hide();
-  $(".my-post-list-page").show();
+  $(".post-detail-page").hide();
+  $(".search-page").show();
 }
 
 NB.handleEditFormUpdateButton=()=>{
@@ -123,7 +126,7 @@ NB.handleEditFormRemoveButton=()=>{
   NetBuz.deletePost(postId, success, failure);
 }
 
-NB.handleEditFormCancelButton=()=>{
+NB.handleReturnButton=()=>{
   NB.postIndex=null;
   NB.gotoMyPostListPage();
 }
@@ -179,16 +182,32 @@ NB.refreshPosts=()=>{
   NB.getMyPostsFromServer(NB.updateMyPostList);
 }
 
+NB.showPost=(post)=>{
+  var postDetail=$("#post_detail");
+  postDetail.find(".title").text(post.title);
+  postDetail.find(".authorId").text(post.authorId);
+  postDetail.find(".category").text(post.category);
+  postDetail.find(".status").text(post.status);
+  postDetail.find(".body").text(post.body);
+  postDetail.find(".lastModified").text(new Date(Number(post.lastModified)).toLocaleString("en-US"));
+  postDetail.find(".title").text(post.title);
+}
+
+NB.handleContactButton=()=>{
+  var post=NB.posts[NB.postIndex];
+  window.open("mailto:" + post.authorId + "@umbc.edu?subject=Re: NetBuz Post " + post.postId + " -    "
+  + encodeURIComponent(post.title), "_blank")
+}
 //this is the app entry point
 $(()=>{
   NB.fieldset=$("#edit_post fieldset");
   var loggedIn=NetBuz.getLoggedInId();
   if(loggedIn){
     NB.updateLoggedInView(true);
-    NB.getMyPostsFromServer(NB.updateMyPostList);
+    NB.getPostsFromServer(NB.updateMyPostList);
     $("#post_table tbody").on("click", "tr", function(event){
       NB.postIndex=$(event.currentTarget).index();
-      NB.gotoEditFormPage(NB.posts[NB.postIndex]);
+      NB.gotoPostDetailPage(NB.posts[NB.postIndex]);
     });
   }
   else{
