@@ -60,6 +60,7 @@ function resetForm(){
 $(function(){
   var loggedInID=NetBuz.getLoggedInId();
   if(loggedInID){
+    $("#logged-in-user-id")[0].innerHTML = loggedInID;
     updateLoggedInView(true);
   }else{
     updateLoggedInView(false);
