@@ -204,13 +204,13 @@ $(()=>{
   var loggedIn=NetBuz.getLoggedInId();
   if(loggedIn){
     NB.updateLoggedInView(true);
-    NB.getPostsFromServer(NB.updateMyPostList);
-    $("#post_table tbody").on("click", "tr", function(event){
-      NB.postIndex=$(event.currentTarget).index();
-      NB.gotoPostDetailPage(NB.posts[NB.postIndex]);
-    });
   }
   else{
     NB.updateLoggedInView(false);
   }
+  NB.getPostsFromServer(NB.updateMyPostList);
+  $("#post_table tbody").on("click", "tr", function(event){
+    NB.postIndex=$(event.currentTarget).index();
+    NB.gotoPostDetailPage(NB.posts[NB.postIndex]);
+  });
 });
