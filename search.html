@@ -1,50 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>Search Artists</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="homepage.css" />
+		<title>Edit Post</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="search.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+		<script src="search.js"></script>
 	</head>
-	<body>	
-	<ul class="logo">
-			<li class="logo-text" >NetBuz</li>
-			<li><a class="active" href="logout.html">logout</a></li>
-		</ul>
-		<div class="container">
-		
+	<body>
+				<div class="float-right show-when-logged-out"><a href="login.html">login</a></div>
+				<div class="float-right show-when-logged-in"><a href="logout.html">logout</a></div>
+				<div class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></div>
 
-			<div class="menu">
-				<ul>
-					<li><a class="active" href="index.html">HOME</a></li>
-					<li><a href="createPost.html">CREATE POST</a></li>
-					<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
-					<li><a href="search.html">SEARCH POST</a></li>
-				</ul>
-			</div>
-			
-			<div class="content">
-				<div class="title">
-					<h2>Search Results</h2>
-				</div>
-				<div>
-					<div class="table">
-						<table>
+
+				<a href="index.html">HOME</a>
+				<a href="createPost.html">CREATE POST</a>
+				<a class="active" href="editPost.html">EDIT/REMOVE POST</a>
+				<a href="search.html">SEARCH</a>
+
+				
+					<table id="post_table">
+						<thead>
 							<tr>
-								<td><a href="sellingbook.html">Selling Books</a></td>
+								<th><div class="number">#</div></th>
+								<th><div class="title" onclick="NB.sortListBy('title',this)">Title<div class="order">&minus;</div></div></th>
+								<th><div class="status" onclick="NB.sortListBy('status',this)">Status<div class="order">&minus;</div></div></th>
+								<th><div class="category" onclick="NB.sortListBy('category',this)">Category<div class="order">&minus;</div></div></th>
+								<th><div class="time" onclick="NB.sortListBy('lastModified',this)">Last Modified<div class="order">&minus;</div></div></th>
+								<th><div class="scroll"></div></th>
 							</tr>
-							<tr>
-								<td><a href="tutoring.html">Tutoring</a></td>
-							</tr>
-							<tr>
-								<td><a href="sellinglaptop.html">Selling laptop</a></td>
-							</tr>
-							<tr>
-								<td><a href="mechanic.html">Auto Mechanic</a></td>
-							</tr>
-						</table>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+        </div>
+
+        				<div class="modal" id="login">
+					<div class="modal-content">
+						<form onsubmit="NB.handleModalLogin(); return false;">
+							<h3>Your Session has expired. Please log in again.</h3>
+							<fieldset id="login_fieldset">
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<label>UMBC ID: </label>
+											</td>
+											<td>
+												<input type = "text" id="user_id" name = "user_id" required/>
+											</td>
+										<tr>
+											<td>
+												<label>Password: </label>
+											</td>
+											<td>
+												<input type = "password" id="password" name = "password" required/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<br />
+								<div>
+									<input class="btn btn-default" type = "submit" value="login" />
+									<input class="btn btn-default" type = "reset" value="clear" />
+								</div>
+							</fieldset>
+						</form>
 					</div>
 				</div>
-			</div>
-		</div>
 	</body>
 </html>
