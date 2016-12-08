@@ -1,4 +1,13 @@
-
+body{
+	background-color: orange;
+	width: auto;
+	overflow: scroll;
+}
+#root{
+	min-width: 800px;
+  width: 60%;
+	margin:auto;
+}
 textarea{
 	resize: none;
 }
@@ -58,7 +67,9 @@ li.dropdown {
 	background-color: orange;
 	float: none;
 }
-
+.float-right{
+	float: right;
+}
 .float-left{
 	float: left;
 }
@@ -90,7 +101,13 @@ li.dropdown {
     display: block;
 }
 
+.data{
+	padding: 10px;
+	background-color:#1abc9c;
+	min-height: 300px;
+	position: relative;
 
+}
 
 p.warning{
 	font-style:italic;

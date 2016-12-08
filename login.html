@@ -1,95 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Login</title>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="logout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./login.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="./assets/js/main.js"></script>
-<script src="./login.js"></script>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
 
-<style>
+			<div class="data">
 
-.link {
-    background: #303030; 
-    border: #000000;
-    color: #FFCC00;
-}
-    
-a:hover {
-    background-color: #707070;
-}
- 
-.content
-{
-    background: #FFCC00;
-    border: solid #000000 1.5px;
-    border-top: none;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-</style>
-</head>
-
-<body>
-	<div id="root">
-            <div class="row">
-                        <div class="col-sm-10 text-center" style="font-size: 60px; padding-top: 20px;">NetBuz</div>
-                        <div class="col-sm-2 text-center" style="padding-top: 15px;">
-                            
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="login.html">Login</a></div>
-                            <div class="float-right show-when-logged-in" style="padding-bottom: 10px;"><a class="btn link" href="logout.html">Logout</a></div>
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="createAccount.html">Register</a></div>
-                            
-                </div> 
-            </div>
-                    
-                    <div class="btn-group btn-group-justified" style="padding-top: 30px;">
-                        <a class="btn link" href="index.html">HOME</a>	
-                        <a class="btn link" href="createPost.html">CREATE POST</a>
-                        <a class="btn link" href="editPost.html">EDIT/REMOVE POST</a>
-                        <a class="btn link" href="search.html">SEARCH</a>
-                    </div>
-
-			<div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-8 content">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-8">
-                                    
-                                    <form class="show-when-logged-out text-center" onsubmit="handleLogin(); return false;">
-					<h1>Login</h1>
+				<form class="show-when-logged-out" onsubmit="handleLogin(); return false;">
+					<h3>Please enter your username and password to login</h3>
 					<fieldset id="form_fieldset">
-
-									
-										<div class="row">UMBC ID: 
-
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<label>UMBC ID: </label>
+									</td>
+									<td>
 										<input type = "text" id="user_id" name = "user_id" required/>
-                                                                                
-                                                                                </div>
-										<div class="row">Password:
-
+									</td>
+								<tr>
+									<td>
+										<label>Password: </label>
+									</td>
+									<td>
 										<input type = "password" id="password" name = "password" required/>
-                                                                                </div>
-
-						<div class="row" style="margin-top: 10px; margin-left: 50px; padding-bottom: 20px">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<div>
 							<input class="btn btn-default" type = "submit" value="login" />
 							<input class="btn btn-default" type = "reset" value="clear" />
 						</div>
 					</fieldset>
 				</form>
-                                    
-                                </div>
-                                <div class="col-sm-2"></div>                               
-                            </div>
-                            <div class="col-sm-2"></div>
-				
 
 				<div class="show-when-logged-in" id="logged_in_message">
 
