@@ -1,70 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Edit Post</title>
-
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="editPost.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="./assets/js/main.js"></script>
-<script src="editPost.js"></script>
-    
-<style>
-
-.link {
-    background: #303030; 
-    border: #000000;
-    color: #FFCC00;
-}
-    
-a:hover {
-    background-color: #707070;
-}
- 
-.content
-{
-    background: #FFCC00;
-    border: solid #000000 1.5px;
-    border-top: none;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-</style>
-</head>
-
+	<head>
+		<title>Edit Post</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="editPost.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+		<script src="editPost.js"></script>
+	</head>
 	<body>
-	<div id="root">
-            <div class="row">
-                        <div class="col-sm-10 text-center" style="font-size: 60px; padding-top: 20px;">NetBuz</div>
-                        <div class="col-sm-2 text-center" style="padding-top: 15px;">
-                            
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="login.html">Login</a></div>
-                            <div class="float-right show-when-logged-in" style="padding-bottom: 10px;"><a class="btn link" href="logout.html">Logout</a></div>
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="createAccount.html">Register</a></div>
-                            
-                </div> 
-            </div>
-                    
-                    <div class="btn-group btn-group-justified" style="padding-top: 30px;">
-                        <a class="btn link" href="index.html">HOME</a>	
-                        <a class="btn link" href="createPost.html">CREATE POST</a>
-                        <a class="btn link" href="editPost.html">EDIT/REMOVE POST</a>
-                        <a class="btn link" href="search.html">SEARCH</a>
-                    </div>
+		<div id="root">
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
-                    <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-8 content">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-8">
-                                    
-                                            <div class="show-when-logged-in my-post-list-page">
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a class="active" href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
+
+			<div class="data">
+        <div class="show-when-logged-in my-post-list-page">
           <h1>My Posts</h1>
 					<div>Number of posts: <span id="number_of_posts"></span>
 						<!--div class="btn btn-small" onclick="NB.refreshPosts()">&#x21BB</div-->
@@ -87,8 +48,8 @@ a:hover {
 					</table>
         </div>
 
-        <div class="show-when-logged-out text-center" id="login_success">
-  				<h3>You must be logged in to create a post. Please log in.</h3>
+        <div class="show-when-logged-out" id="login_success">
+  				<p> You must log in first. </p>
   			</div>
 
         <form class="edit-form-page" id="edit_post" onsubmit="NB.handleEditFormUpdateButton(); return false;">
@@ -126,9 +87,9 @@ a:hover {
     						<tr>
                   <td></td>
     							<td>
-    								<input class="btn-1 btn-default" type="submit" value="Update">
-    								<input class="btn-1 btn-default" type="button" onclick="NB.handleEditFormRemoveButton()" value="Remove">
-                    <input class="btn-1 btn-default" type="button" onclick="NB.handleEditFormCancelButton()" value="Cancel">
+    								<input class="btn btn-default" type="submit" value="Update">
+    								<input class="btn btn-default" type="button" onclick="NB.handleEditFormRemoveButton()" value="Remove">
+                    <input class="btn btn-default" type="button" onclick="NB.handleEditFormCancelButton()" value="Cancel">
     							</td>
     						</tr>
               </tbody>
@@ -161,20 +122,14 @@ a:hover {
 								</table>
 								<br />
 								<div>
-									<input class="btn-1 btn-default" type = "submit" value="login" />
-									<input class="btn-1 btn-default" type = "reset" value="clear" />
+									<input class="btn btn-default" type = "submit" value="login" />
+									<input class="btn btn-default" type = "reset" value="clear" />
 								</div>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-                                    
-                                </div>
-                                <div class="col-sm-2"></div>
-                            </div>
-                            <div class="col-sm-2"></div>
-                    </div>
-
+			</div>
 		</div>
 	</body>
 </html>
