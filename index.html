@@ -1,106 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Home Page</title>
-
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="./assets/js/main.js"></script>
-    
-<style>
-
-.link {
-    background: #303030; 
-    border: #000000;
-    color: #FFCC00;
-}
-    
-a:hover {
-    background-color: #707070;
-}
- 
-.content
-{
-    background: #FFCC00;
-    border: solid #000000 1.5px;
-    border-top: none;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-html, body {
-    height: 100%;
-}
-</style>
-
-</head>
+	<head>
+		<title>NetBuz Home</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="logout.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+	</head>
 	<body>
 		<div id="root">
-                    <div class="row">
-                        <div class="col-sm-10 text-center" style="font-size: 60px; padding-top: 20px;">NetBuz</div>
-                        <div class="col-sm-2 text-center" style="padding-top: 15px;">
-                            
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="login.html">Login</a></div>
-                            <div class="float-right show-when-logged-in" style="padding-bottom: 10px;"><a class="btn link" href="logout.html">Logout</a></div>
-                            <div class="float-right show-when-logged-out" style="padding-bottom: 10px;"><a class="btn link" href="createAccount.html">Register</a></div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="btn-group btn-group-justified" style="padding-top: 30px;">
-                        <a class="btn link" href="index.html">HOME</a>	
-                        <a class="btn link" href="createPost.html">CREATE POST</a>
-                        <a class="btn link" href="editPost.html">EDIT/REMOVE POST</a>
-                        <a class="btn link" href="search.html">SEARCH</a>
-                    </div>    
+			<ul class="logo">
+				<li class="logo-text">NetBuz</li>
+				<li class="float-right show-when-logged-out"><a href="login.html">login</a></li>
+				<li class="float-right show-when-logged-in"><a href="logout.html">logout</a></li>
+				<li class="float-right show-when-logged-out"><a href="createAccount.html">Register</a></li>
+			</ul>
 
+			<ul>
+				<li><a class="active" href="index.html">HOME</a></li>
+				<li><a href="createPost.html">CREATE POST</a></li>
+				<li><a href="editPost.html">EDIT/REMOVE POST</a></li>
+				<li><a href="search.html">SEARCH</a></li>
+			</ul>
 
-                    <div class="row">
-                        
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-10 content">
-                            
-                        <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-4">
-                            <img src="img/umbc.png" class="img-rounded" width="300" height="250" style="margin-top: 30px;">
-                        </div>
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-5" style="padding-bottom: 10px;"><h2>
-                            Welcome to the NetBuz Home Page! NetBuz is an online market where UMBC 
+			<div class="data">
+
+        <p>                            Welcome to the NetBuz Home Page! NetBuz is an online market where UMBC 
                             students can advertise services or items they are willing to provide, 
                             or publish requests for services or items they wish to acquire. NetBuz 
-                            will enable students to connect and exchange goods or services with other students.
-                        </h2></div>
-                        <div class="col-sm-1"></div>
-                        </div>
-                            
-                        </div>
-                        <div class="col-sm-1"></div>
-                        
-                    </div>
-                    
-                    
-                </div>
-            
-            <script>
-            (()=>{
-                var loggedInID = NetBuz.getLoggedInId();
-                    if(loggedInID){
-			$(".show-when-logged-in").show();
-			$(".show-when-logged-out").hide();
-                    }
-                    else{
-			$(".show-when-logged-in").hide();
-			$(".show-when-logged-out").show();
-                    }
-		})();
-            </script>
-    </body>
+                            will enable students to connect and exchange goods or services with other students.</p>
+
+			</div>
+		</div>
+		<script>
+			(()=>{
+        var loggedInID = NetBuz.getLoggedInId();
+				if(loggedInID){
+						$(".show-when-logged-in").show();
+						$(".show-when-logged-out").hide();
+				}
+				else{
+						$(".show-when-logged-in").hide();
+						$(".show-when-logged-out").show();
+				}
+			})();
+
+		</script>
+	</body>
 </html>
